@@ -2,6 +2,8 @@
 const express = require("express");
 const cors = require("cors");
 const mongooDB = require("mongoose");
+const registerRoute=require('./routes/registerRoute');
+const loginRoute=require('./routes/loginRoute');
 require("dotenv/config");
 
 //starting app the server
@@ -10,7 +12,8 @@ const app = express();
 //middleware
 app.use(cors());
 app.use(express.json());
-
+app.use('/register',registerRoute);
+app.use('/login',loginRoute);
 
 
 //connecting to the database
