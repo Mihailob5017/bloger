@@ -2,6 +2,7 @@ const Router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const JoiRegisterValidator = require("../auth/validation/registerValidation");
 const registerModel = require("../model/RegisterModel");
+const jwt=require('jsonwebtoken')
 
 Router.post("/", async (req, res) => {
   //validating the data with hapi/joi
@@ -31,9 +32,14 @@ Router.post("/", async (req, res) => {
     password: hashedPassword
   });
   try {
-    await newUser.save().then(() => res.send("Account Successfuly Created,Welcome to Bloger"));
+    await newUser.save().then(async () => 
+    {
+      const user = await registerModel.findOne({ email: req.body.email });
+      const token = jwt.sign({ _id: user._id }, process.env.TOKEN);
+      res.header("auth-token", token).send(token);
+    });
   } catch (error) {
-    res.status(400).send("Something is wrong.Please Try again ");
+    res.status(400).send(" "+error);
   }
 });
 
