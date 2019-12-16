@@ -18,3 +18,6 @@
     padding: 1 0em;
     opacity: 0.85;
 }
+.grey-transparent{
+    background:rgba(200, 200, 200, 0.15) ;
+}

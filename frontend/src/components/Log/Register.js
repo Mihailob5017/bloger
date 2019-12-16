@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Register = () => {
+  const [username, setUsername] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
   return (
-    <div id="register" className="modal transparent">
+    <div id="register" className="modal  grey-transparent">
       <div className="modal-content">
         <div className="row">
           <div className="input-field col s12">
             <input
               id="username"
               type="text"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
               className="validate"
               style={{ color: "white" }}
               autoComplete="off"
@@ -22,6 +30,8 @@ const Register = () => {
             <input
               id="first_name"
               type="text"
+              value={firstname}
+              onChange={e => setFirstname(e.target.value)}
               className="validate"
               style={{ color: "white" }}
               autoComplete="off"
@@ -32,6 +42,8 @@ const Register = () => {
             <input
               id="last_name"
               type="text"
+              value={lastname}
+              onChange={e => setLastname(e.target.value)}
               className="validate"
               style={{ color: "white" }}
               autoComplete="off"
@@ -45,6 +57,8 @@ const Register = () => {
             <input
               id="password"
               type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
               className="validate"
               style={{ color: "white" }}
               autoComplete="off"
@@ -57,6 +71,8 @@ const Register = () => {
             <input
               id="email"
               type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
               className="validate"
               style={{ color: "white" }}
               autoComplete="off"
