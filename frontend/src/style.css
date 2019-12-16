@@ -1,0 +1,20 @@
+.backgound-image{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+.center-modals{
+    position: absolute;
+    width: 30%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 15%;
+}
+.modal-btns{
+    padding: 1 0em;
+    opacity: 0.85;
+}
