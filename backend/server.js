@@ -5,6 +5,7 @@ const mongooDB = require("mongoose");
 const registerRoute = require("./routes/registerRoute");
 const loginRoute = require("./routes/loginRoute");
 const blogRoute = require("./routes/private/blogRoute");
+const userRoute=require('./routes/private/userRoute');
 require("dotenv/config");
 
 //starting app the server
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use("/register", registerRoute);
 app.use("/login", loginRoute);
 app.use("/blogs", blogRoute);
+app.use('/user',userRoute)
 
 //connecting to the database
 mongooDB.connect(
