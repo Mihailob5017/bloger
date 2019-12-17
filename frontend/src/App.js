@@ -7,6 +7,7 @@ import "./style.css";
 import Navbar from "./components/Navbar";
 import LoginModal from "./components/Log/LoginModal";
 import Register from "./components/Log/Register";
+import Login from "./components/Log/Login";
 const App = () => {
   useEffect(() => {
     Materialize.AutoInit();
@@ -21,7 +22,8 @@ const App = () => {
       />
       <Navbar />
       <LoginModal />
-      <Register/>
+      <Register />
+      <Login />
     </div>
   );
 };

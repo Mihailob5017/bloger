@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav>
       <div className="nav-wrapper blue darken-2" >
         <a href="#" className="brand-logo">
-        Bloger<i class="large material-icons">android</i>
+        Bloger<i className="large material-icons">android</i>
         </a>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>

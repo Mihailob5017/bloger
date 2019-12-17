@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import M from "materialize-css";
+const axios = require("axios").default;
 const Register = () => {
   const [username, setUsername] = useState("");
   const [firstname, setFirstname] = useState("");
@@ -7,6 +8,38 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
+  const handleSubmit = async () => {
+    if (
+      username === "" ||
+      firstname === "" ||
+      lastname === "" ||
+      password === "" ||
+      email === ""
+    ) {
+      M.toast({ html: "All fields must be sumbited" });
+    } else {
+      const newUser = {
+        firstname: firstname,
+        lastname: lastname,
+        username: username,
+        email: email,
+        password: password
+      };
+      try {
+        const res = await axios.post("http://localhost:5000/register", newUser);
+        M.toast({ html: "Successfully Registered! Welcome to Bloger" });
+        console.log(res.data);
+      } catch (error) {
+        console.log(error);
+        M.toast({html:"Something went wrong,make sure all fields have a min of 5 characters"});
+      }
+    }
+    setEmail("");
+    setFirstname("");
+    setLastname("");
+    setPassword("");
+    setUsername("");
+  };
   return (
     <div id="register" className="modal  grey-transparent">
       <div className="modal-content">
@@ -21,7 +54,7 @@ const Register = () => {
               style={{ color: "white" }}
               autoComplete="off"
             />
-            <label for="username">Username</label>
+            <label htmlFor="username">Username</label>
           </div>
         </div>
 
@@ -36,7 +69,7 @@ const Register = () => {
               style={{ color: "white" }}
               autoComplete="off"
             />
-            <label for="first_name">First Name</label>
+            <label htmlFor="first_name">First Name</label>
           </div>
           <div className="input-field col s6">
             <input
@@ -48,7 +81,7 @@ const Register = () => {
               style={{ color: "white" }}
               autoComplete="off"
             />
-            <label for="last_name">Last Name</label>
+            <label htmlFor="last_name">Last Name</label>
           </div>
         </div>
 
@@ -63,7 +96,7 @@ const Register = () => {
               style={{ color: "white" }}
               autoComplete="off"
             />
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
           </div>
         </div>
         <div className="row">
@@ -77,7 +110,7 @@ const Register = () => {
               style={{ color: "white" }}
               autoComplete="off"
             />
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
           </div>
         </div>
       </div>
@@ -85,6 +118,7 @@ const Register = () => {
         <a
           href="#!"
           className="modal-close waves-effect waves-blue blue darken-2 white-text btn-flat"
+          onClick={handleSubmit}
         >
           Register
         </a>
