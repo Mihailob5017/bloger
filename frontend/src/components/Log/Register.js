@@ -31,7 +31,10 @@ const Register = () => {
         console.log(res.data);
       } catch (error) {
         console.log(error);
-        M.toast({html:"Something went wrong,make sure all fields have a min of 5 characters"});
+        M.toast({
+          html:
+            "Something went wrong,make sure all fields have a min of 5 characters"
+        });
       }
     }
     setEmail("");
@@ -84,21 +87,6 @@ const Register = () => {
             <label htmlFor="last_name">Last Name</label>
           </div>
         </div>
-
-        <div className="row">
-          <div className="input-field col s12">
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              className="validate"
-              style={{ color: "white" }}
-              autoComplete="off"
-            />
-            <label htmlFor="password">Password</label>
-          </div>
-        </div>
         <div className="row">
           <div className="input-field col s12">
             <input
@@ -111,6 +99,20 @@ const Register = () => {
               autoComplete="off"
             />
             <label htmlFor="email">Email</label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="input-field col s12">
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              className="validate"
+              style={{ color: "white" }}
+              autoComplete="off"
+            />
+            <label htmlFor="password">Password</label>
           </div>
         </div>
       </div>

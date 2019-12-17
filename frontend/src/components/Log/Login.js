@@ -47,20 +47,6 @@ const Login = () => {
         <div className="row">
           <div className="input-field col s12">
             <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              className="validate"
-              style={{ color: "white" }}
-              autoComplete="off"
-            />
-            <label htmlFor="password">Password</label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="input-field col s12">
-            <input
               id="email"
               type="email"
               value={email}
@@ -70,6 +56,20 @@ const Login = () => {
               autoComplete="off"
             />
             <label htmlFor="email">Email</label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="input-field col s12">
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              className="validate"
+              style={{ color: "white" }}
+              autoComplete="off"
+            />
+            <label htmlFor="password">Password</label>
           </div>
         </div>
       </div>
