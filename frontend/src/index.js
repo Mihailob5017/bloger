@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import State from "./context API/State";
 
-
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <State>
+    <App />
+  </State>,
+  document.getElementById("root")
+);

@@ -1,30 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import "materialize-css/dist/css/materialize.min.css";
 import Materialize from "materialize-css/dist/js/materialize.min.js";
 import "./style.css";
 
 //Components
-import Navbar from "./components/Navbar";
-import LoginModal from "./components/Log/LoginModal";
-import Register from "./components/Log/Register";
-import Login from "./components/Log/Login";
+import LoginPage from "./components/LoginPage/LoginPage";
+import HomePage from "./components/HomePage/HomePage";
+import contextValue from "../src/context API/Context";
 const App = () => {
+  const context = useContext(contextValue);
   useEffect(() => {
     Materialize.AutoInit();
+    console.log(context);
   }, []);
 
   return (
-    <div>
-      <img
-        className="backgound-image"
-        src={require("./bg.jpg")}
-        alt="bacground image"
-      />
-      <Navbar />
-      <LoginModal />
-      <Register />
-      <Login />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={LoginPage} />
+        <Route path="/home" component={HomePage} />
+      </Switch>
+    </Router>
   );
 };
 

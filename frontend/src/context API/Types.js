@@ -1,0 +1,3 @@
+export const SET_USER='SET_USER';
+export const SET_AS_AUTHENTICATED="SET_AS_AUTHENTICATED";
+export const SET_TOKEN="SET_TOKEN";

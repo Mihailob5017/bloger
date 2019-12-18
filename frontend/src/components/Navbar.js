@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Link} from 'react-router-dom'
 const Navbar = () => {
   return (
     <nav>
@@ -9,7 +9,7 @@ const Navbar = () => {
         </a>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>
-            <a href="#">Home</a>
+           <Link to='/home'>Home</Link>
           </li>
           <li>
             <a href="#">Profile</a>

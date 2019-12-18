@@ -1,34 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import contextValue from "../../../context API/Context";
 import M from "materialize-css";
 const axios = require("axios").default;
-const Login = () => {
+const Register = () => {
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [firstname, setFirstname] = useState("Milica");
+  const [lastname, setLastname] = useState("Markovic");
+  const [password, setPassword] = useState("jsmv4183");
   const [email, setEmail] = useState("");
+
+  //context
+  const context = useContext(contextValue);
+
   const handleSubmit = async () => {
-    if (username === "" || password === "" || email === "") {
+    if (
+      username === "" ||
+      firstname === "" ||
+      lastname === "" ||
+      password === "" ||
+      email === ""
+    ) {
       M.toast({ html: "All fields must be sumbited" });
     } else {
       const newUser = {
+        firstname: firstname,
+        lastname: lastname,
         username: username,
         email: email,
         password: password
       };
       try {
-        const res = await axios.post("http://localhost:5000/login", newUser);
-        M.toast({ html: "Successfully Loged in" });
-        console.log(res.data);
+        const res = await axios.post("http://localhost:5000/register", newUser);
+        M.toast({ html: "Successfully Registered! Welcome to Bloger" });
+       context.setToken(res.data) 
       } catch (error) {
-        M.toast({ html: "Username,Email or Password are incorrect" });
+        console.log(error);
+        M.toast({
+          html:
+            "Something went wrong,make sure all fields have a min of 5 characters"
+        });
       }
     }
     setEmail("");
+    setFirstname("");
+    setLastname("");
     setPassword("");
     setUsername("");
   };
-
   return (
-    <div id="login" className="modal  grey-transparent">
+    <div id="register" className="modal  grey-transparent">
       <div className="modal-content">
         <div className="row">
           <div className="input-field col s12">
@@ -42,6 +62,33 @@ const Login = () => {
               autoComplete="off"
             />
             <label htmlFor="username">Username</label>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="input-field col s6">
+            <input
+              id="first_name"
+              type="text"
+              value={firstname}
+              onChange={e => setFirstname(e.target.value)}
+              className="validate"
+              style={{ color: "white" }}
+              autoComplete="off"
+            />
+            <label htmlFor="first_name">First Name</label>
+          </div>
+          <div className="input-field col s6">
+            <input
+              id="last_name"
+              type="text"
+              value={lastname}
+              onChange={e => setLastname(e.target.value)}
+              className="validate"
+              style={{ color: "white" }}
+              autoComplete="off"
+            />
+            <label htmlFor="last_name">Last Name</label>
           </div>
         </div>
         <div className="row">
@@ -79,11 +126,11 @@ const Login = () => {
           className="modal-close waves-effect waves-blue blue darken-2 white-text btn-flat"
           onClick={handleSubmit}
         >
-          Login
+          Register
         </a>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;
