@@ -1,23 +1,17 @@
-import React from 'react'
-
-import Navbar from "../Navbar";
+import React, { useEffect } from "react";
+import M from "materialize-css";
 import LoginModal from "./Log/LoginModal";
 import Register from "./Log/Register";
 import Login from "./Log/Login";
 const LoginPage = () => {
-    return (
-        <div>
-      <img
-        className="backgound-image"
-        src={require("../../bg.jpg")}
-        alt="bacground image"
-      />
-      <Navbar />
+  useEffect(() => M.AutoInit(), []);
+  return (
+    <>
       <LoginModal />
       <Register />
       <Login />
-    </div>
-    )
-}
+    </>
+  );
+};
 
-export default LoginPage
+export default LoginPage;

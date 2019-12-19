@@ -4,9 +4,9 @@ import M from "materialize-css";
 const axios = require("axios").default;
 const Register = () => {
   const [username, setUsername] = useState("");
-  const [firstname, setFirstname] = useState("Milica");
-  const [lastname, setLastname] = useState("Markovic");
-  const [password, setPassword] = useState("jsmv4183");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
   //context
@@ -48,7 +48,7 @@ const Register = () => {
     setUsername("");
   };
   return (
-    <div id="register" className="modal  grey-transparent">
+    <div id="register" className="modal ">
       <div className="modal-content">
         <div className="row">
           <div className="input-field col s12">

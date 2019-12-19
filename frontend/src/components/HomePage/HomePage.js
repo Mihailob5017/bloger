@@ -1,12 +1,17 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React, { useEffect, useContext } from "react";
+import contextValue from "../../context API/Context";
+//COMPONENTS
+import NotLoggedIn from "./NotLoggedIn";
+import Blogs from "./Posts/Blogs";
+import WriteBlog from './Posts/WriteBlog';
 const HomePage = () => {
-    return (
-        <div>
-            Hello nicy people
-            <Link to='/#'>Go back</Link>
-        </div>
-    )
-}
+  const context = useContext(contextValue);
 
-export default HomePage
+  return (
+    <div style={{ marginTop: "4em" }} className="container">
+      {context.isUserAuthenticated ? <><WriteBlog/> <Blogs /></>: <NotLoggedIn />}
+    </div>
+  );
+};
+
+export default HomePage;

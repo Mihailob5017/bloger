@@ -22,7 +22,6 @@ const Login = () => {
         const res = await axios.post("http://localhost:5000/login", newUser);
         context.setToken(res.data);
         M.toast({ html: "Successfully Loged in" });
-        console.log(res.data);
       } catch (error) {
         M.toast({ html: "Username,Email or Password are incorrect" });
       }

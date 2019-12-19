@@ -6,6 +6,7 @@ import "./style.css";
 
 //Components
 import LoginPage from "./components/LoginPage/LoginPage";
+import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage/HomePage";
 import contextValue from "../src/context API/Context";
 const App = () => {
@@ -17,10 +18,18 @@ const App = () => {
 
   return (
     <Router>
-      <Switch>
-        <Route exact path="/" component={LoginPage} />
-        <Route path="/home" component={HomePage} />
-      </Switch>
+      <div>
+        <img
+          className="backgound-image"
+          src={require("./bg.jpg")}
+          alt="bacground image"
+        />
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={LoginPage} />
+          <Route path="/home" component={HomePage} />
+        </Switch>
+      </div>
     </Router>
   );
 };
