@@ -48,7 +48,7 @@ const Register = () => {
     setUsername("");
   };
   return (
-    <div id="register" className="modal ">
+    <div id="register" className="modal grey-transparent">
       <div className="modal-content">
         <div className="row">
           <div className="input-field col s12">
