@@ -7,7 +7,7 @@ const WriteBlog = () => {
   const [text, setText] = useState("");
 
   const handleSubmit = () => {
-    if (title === "") M.toast({ html: "The title field must be filled!" });
+    if (title === "" || text==="") M.toast({ html: "Both fiels must be filled!" });
     else {
       context.postBlog(title,text);
     }
@@ -40,7 +40,7 @@ const WriteBlog = () => {
             type="text"
             className="validate"
           />
-          <label htmlFor="body">Text : (Optional)</label>
+          <label htmlFor="body">Text : </label>
         </div>
       </div>
       <div className="row">
