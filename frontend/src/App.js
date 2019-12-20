@@ -8,6 +8,7 @@ import "./style.css";
 import LoginPage from "./components/LoginPage/LoginPage";
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage/HomePage";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
 import contextValue from "../src/context API/Context";
 const App = () => {
   const context = useContext(contextValue);
@@ -28,6 +29,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={LoginPage} />
           <Route path="/home" component={HomePage} />
+          <Route path="/profile" component={ProfilePage} />
         </Switch>
       </div>
     </Router>

@@ -1,11 +1,13 @@
 import React, { useEffect, useContext } from "react";
 import contextValue from "../../context API/Context";
+
 //COMPONENTS
-import NotLoggedIn from "./NotLoggedIn";
-import Blogs from "./Posts/Blogs";
-import WriteBlog from "./Posts/WriteBlog";
-const HomePage = () => {
+import NotLoggedIn from "../HomePage/NotLoggedIn";
+import ProfileCard from "./ProfileCard";
+
+const ProfilePage = () => {
   const context = useContext(contextValue);
+
   useEffect(() => {
     context.getUser();
   }, []);
@@ -14,7 +16,7 @@ const HomePage = () => {
     <div style={{ marginTop: "4em" }} className="container">
       {context.isUserAuthenticated ? (
         <>
-          <WriteBlog /> <Blogs />
+          <ProfileCard user={context.user} />
         </>
       ) : (
         <NotLoggedIn />
@@ -23,4 +25,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default ProfilePage;

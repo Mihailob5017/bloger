@@ -25,6 +25,10 @@
     height: 500px;
     overflow-y: scroll;
 }
+.card-action{
+    display: flex;
+    justify-content: space-between;
+}
 /* width */
 ::-webkit-scrollbar {
     width: 5px;

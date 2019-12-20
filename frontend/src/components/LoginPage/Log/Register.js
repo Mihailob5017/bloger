@@ -32,7 +32,7 @@ const Register = () => {
       try {
         const res = await axios.post("http://localhost:5000/register", newUser);
         M.toast({ html: "Successfully Registered! Welcome to Bloger" });
-       context.setToken(res.data) 
+        context.setToken(res.data);
       } catch (error) {
         console.log(error);
         M.toast({

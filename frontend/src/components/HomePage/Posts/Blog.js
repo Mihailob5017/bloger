@@ -7,9 +7,9 @@ const Blog = ({ blog }) => {
     M.Tooltip.init(document.querySelectorAll(".tooltipped"));
   }, []);
   const context = useContext(contextValue);
-  
+
   //
-  
+
   return (
     <li className="collection-item transparent avatar">
       <img src={require("./avatar.png")} alt="" className="circle" />

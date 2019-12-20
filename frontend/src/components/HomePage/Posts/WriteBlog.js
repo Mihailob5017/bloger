@@ -1,18 +1,19 @@
-import React, { useState ,useContext} from "react";
+import React, { useState, useContext } from "react";
 import M from "materialize-css";
 import contextValue from "../../../context API/Context";
 const WriteBlog = () => {
-  const context = useContext(contextValue)
+  const context = useContext(contextValue);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
   const handleSubmit = () => {
-    if (title === "" || text==="") M.toast({ html: "Both fiels must be filled!" });
+    if (title === "" || text === "")
+      M.toast({ html: "Both fiels must be filled!" });
     else {
-      context.postBlog(title,text);
+      context.postBlog(title, text);
     }
-    setTitle('');
-    setText('');
+    setTitle("");
+    setText("");
   };
 
   return (

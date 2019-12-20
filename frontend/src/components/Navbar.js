@@ -16,14 +16,14 @@ const Navbar = () => {
             <Link to="/home">Home</Link>
           </li>
           <li>
-            <a href="#">Profile</a>
+            <Link to="/profile">Profile</Link>
           </li>
           <li>
             <Link to="/">Log In</Link>
           </li>
           <li>
             <a href="#" onClick={context.logOut}>
-              <i class="material-icons">exit_to_app</i>
+              <i className="material-icons">exit_to_app</i>
             </a>
           </li>
         </ul>
