@@ -1,7 +1,13 @@
 import React, { useReducer } from "react";
 import Reducer from "./Reducer";
 import Context from "./Context";
-import { SET_TOKEN, SET_USER, SET_AS_AUTHENTICATED, GET_BLOGS } from "./Types";
+import {
+  SET_TOKEN,
+  SET_USER,
+  SET_AS_AUTHENTICATED,
+  GET_BLOGS,
+  RESET_STATE
+} from "./Types";
 const axios = require("axios").default;
 
 const State = props => {
@@ -88,6 +94,21 @@ const State = props => {
       console.error(error);
     }
   };
+  const logOut = () => {
+    const initialState = {
+      user: {
+        firstname: "",
+        lastname: "",
+        username: "",
+        email: ""
+      },
+      token: "",
+      userBlogs: [],
+      allBlogs: [],
+      isUserAuthenticated: false
+    };
+    dispatch({ type: RESET_STATE, payload: initialState });
+  };
 
   //END OF ALL
   return (
@@ -101,7 +122,8 @@ const State = props => {
         getUser,
         getBlogs,
         postBlog,
-        deleteBlog
+        deleteBlog,
+        logOut
       }}
     >
       {props.children}

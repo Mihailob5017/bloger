@@ -1,4 +1,10 @@
-import { SET_TOKEN, SET_USER, SET_AS_AUTHENTICATED, GET_BLOGS } from "./Types";
+import {
+  SET_TOKEN,
+  SET_USER,
+  SET_AS_AUTHENTICATED,
+  GET_BLOGS,
+  RESET_STATE
+} from "./Types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -10,6 +16,9 @@ export default (state, action) => {
       return { ...state, isUserAuthenticated: true };
     case GET_BLOGS:
       return { ...state, allBlogs: action.payload };
+    case RESET_STATE:
+      return { ...action.payload };
+
     default:
       return state;
   }
