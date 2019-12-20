@@ -11,7 +11,7 @@ const Blogs = () => {
 
   return (
     <ul
-      className="collection with-header  transparent"
+      className="collection with-header my-coll  transparent"
       style={{ border: "none" }}
     >
       <li className="collection-header white-text transparent">

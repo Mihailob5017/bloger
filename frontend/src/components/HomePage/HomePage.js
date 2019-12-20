@@ -6,6 +6,9 @@ import Blogs from "./Posts/Blogs";
 import WriteBlog from './Posts/WriteBlog';
 const HomePage = () => {
   const context = useContext(contextValue);
+useEffect(()=>{
+  context.getUser();
+},[])
 
   return (
     <div style={{ marginTop: "4em" }} className="container">

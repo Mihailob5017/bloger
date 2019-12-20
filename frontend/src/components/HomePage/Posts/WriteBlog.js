@@ -1,8 +1,19 @@
-import React, { useState } from "react";
-
+import React, { useState ,useContext} from "react";
+import M from "materialize-css";
+import contextValue from "../../../context API/Context";
 const WriteBlog = () => {
+  const context = useContext(contextValue)
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+
+  const handleSubmit = () => {
+    if (title === "") M.toast({ html: "The title field must be filled!" });
+    else {
+      context.postBlog(title,text);
+    }
+    setTitle('');
+    setText('');
+  };
 
   return (
     <div className="grey-transparent" style={{ marginBottom: "3em" }}>
@@ -29,11 +40,14 @@ const WriteBlog = () => {
             type="text"
             className="validate"
           />
-          <label htmlFor="body">Text :</label>
+          <label htmlFor="body">Text : (Optional)</label>
         </div>
       </div>
       <div className="row">
-        <a className="waves-effect waves-light btn blue darken-2 col s12">
+        <a
+          onClick={handleSubmit}
+          className="waves-effect waves-light btn blue darken-2 col s12"
+        >
           <i className="material-icons right">cloud</i>Tell us what's on you
           mind!
         </a>

@@ -59,6 +59,24 @@ const State = props => {
       console.error(error);
     }
   };
+  const postBlog = async (title, body) => {
+    const bodyObj = {
+      username: state.user.username,
+      header: title,
+      body: body
+    };
+    console.log(bodyObj);
+
+    try {
+      await axios
+        .post("http://localhost:5000/blogs", bodyObj, {
+          headers: { "auth-token": state.token }
+        })
+        .then(getBlogs);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   //END OF ALL
   return (
@@ -70,7 +88,8 @@ const State = props => {
         allBlogs: state.allBlogs,
         setToken,
         getUser,
-        getBlogs
+        getBlogs,
+        postBlog
       }}
     >
       {props.children}
