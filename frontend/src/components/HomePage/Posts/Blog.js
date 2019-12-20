@@ -1,10 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import M from "materialize-css";
 import { Link } from "react-router-dom";
+import contextValue from "../../../context API/Context";
 const Blog = ({ blog }) => {
   useEffect(() => {
     M.Tooltip.init(document.querySelectorAll(".tooltipped"));
   }, []);
+  const context = useContext(contextValue);
+  
+  //
+  
   return (
     <li className="collection-item transparent avatar">
       <img src={require("./avatar.png")} alt="" className="circle" />
@@ -14,14 +19,25 @@ const Blog = ({ blog }) => {
         {blog.body}
       </h6>
       <a href="#!" className="secondary-content">
-        <Link
-          to="/"
-          class="transparent tooltipped"
-          data-position="left"
-          data-tooltip="View Profile"
-        >
-          <i className="material-icons white-text">android</i>
-        </Link>
+        {context.user.username !== blog.username ? (
+          <Link
+            to="/"
+            className="transparent tooltipped"
+            data-position="left"
+            data-tooltip="View Profile"
+          >
+            <i className="material-icons white-text">android</i>
+          </Link>
+        ) : (
+          <i
+            onClick={() => {
+              context.deleteBlog(blog._id);
+            }}
+            className="material-icons red-text"
+          >
+            delete
+          </i>
+        )}
       </a>
     </li>
   );

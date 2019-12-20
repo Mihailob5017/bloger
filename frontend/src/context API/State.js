@@ -77,6 +77,17 @@ const State = props => {
       console.error(error);
     }
   };
+  const deleteBlog = async id => {
+    try {
+      await axios
+        .delete(`http://localhost:5000/blogs/${id}`, {
+          headers: { "auth-token": state.token }
+        })
+        .then(getBlogs);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   //END OF ALL
   return (
@@ -89,7 +100,8 @@ const State = props => {
         setToken,
         getUser,
         getBlogs,
-        postBlog
+        postBlog,
+        deleteBlog
       }}
     >
       {props.children}
