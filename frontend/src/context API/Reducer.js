@@ -3,7 +3,8 @@ import {
   SET_USER,
   SET_AS_AUTHENTICATED,
   GET_BLOGS,
-  RESET_STATE
+  RESET_STATE,
+  GET_ALL_USERS
 } from "./Types";
 
 export default (state, action) => {
@@ -18,6 +19,8 @@ export default (state, action) => {
       return { ...state, allBlogs: action.payload };
     case RESET_STATE:
       return { ...action.payload };
+    case GET_ALL_USERS:
+      return { ...state, allUsers: action.payload };
 
     default:
       return state;

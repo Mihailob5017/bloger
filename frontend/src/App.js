@@ -6,6 +6,7 @@ import "./style.css";
 
 //Components
 import LoginPage from "./components/LoginPage/LoginPage";
+import UserPage from "./components/UserPage/Userpage";
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage/HomePage";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
@@ -14,7 +15,7 @@ const App = () => {
   const context = useContext(contextValue);
   useEffect(() => {
     Materialize.AutoInit();
-    console.log(context);
+    context.getAllUsers();
   }, []);
 
   return (
@@ -30,6 +31,15 @@ const App = () => {
           <Route exact path="/" component={LoginPage} />
           <Route path="/home" component={HomePage} />
           <Route path="/profile" component={ProfilePage} />
+          {context.allUsers.map((user, i) => {
+            return (
+              <Route
+                key={i}
+                path={`/${user._id}`}
+                render={props => <UserPage props={props} user={user} />}
+              />
+            );
+          })}
         </Switch>
       </div>
     </Router>

@@ -6,10 +6,10 @@ import {
   SET_USER,
   SET_AS_AUTHENTICATED,
   GET_BLOGS,
-  RESET_STATE
+  RESET_STATE,
+  GET_ALL_USERS
 } from "./Types";
 const axios = require("axios").default;
-
 const State = props => {
   const initialState = {
     user: {
@@ -19,7 +19,7 @@ const State = props => {
       email: ""
     },
     token: "",
-    userBlogs: [],
+    allUsers: [],
     allBlogs: [],
     isUserAuthenticated: false
   };
@@ -51,6 +51,7 @@ const State = props => {
     dispatch({ type: SET_TOKEN, payload: token });
     setAuth();
   };
+
   //set as authenicated
   const setAuth = () => dispatch({ type: SET_AS_AUTHENTICATED });
 
@@ -65,14 +66,14 @@ const State = props => {
       console.error(error);
     }
   };
+
+  //post a new blog
   const postBlog = async (title, body) => {
     const bodyObj = {
       username: state.user.username,
       header: title,
       body: body
     };
-    console.log(bodyObj);
-
     try {
       await axios
         .post("http://localhost:5000/blogs", bodyObj, {
@@ -94,9 +95,11 @@ const State = props => {
       console.error(error);
     }
   };
+
   //filter a specific posts
   const filterPosts = username =>
     state.allBlogs.filter(blog => blog.username === username);
+
   //log out all the posts
   const logOut = () => {
     const initialState = {
@@ -107,16 +110,28 @@ const State = props => {
         email: ""
       },
       token: "",
-      userBlogs: [],
+      allUsers: [],
       allBlogs: [],
       isUserAuthenticated: false
     };
     dispatch({ type: RESET_STATE, payload: initialState });
   };
+
   //delete all you posts
   const deleteYourPosts = async () => {
-    await filterPosts(state.user.username).forEach(post => deleteBlog(post._id));
+    await filterPosts(state.user.username).forEach(post =>
+      deleteBlog(post._id)
+    );
     getBlogs();
+  };
+
+  const getAllUsers = async () => {
+    try {
+      const allUsers = await axios.get("http://localhost:5000/allusers");
+      dispatch({ type: GET_ALL_USERS, payload: allUsers.data });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //END OF ALL
@@ -127,6 +142,7 @@ const State = props => {
         token: state.token,
         isUserAuthenticated: state.isUserAuthenticated,
         allBlogs: state.allBlogs,
+        allUsers: state.allUsers,
         setToken,
         getUser,
         getBlogs,
@@ -134,7 +150,8 @@ const State = props => {
         deleteBlog,
         logOut,
         filterPosts,
-        deleteYourPosts
+        deleteYourPosts,
+        getAllUsers
       }}
     >
       {props.children}
