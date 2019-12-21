@@ -1,6 +1,7 @@
-import React from "react";
-
+import React,{useContext} from "react";
+import contextValue from '../../context API/Context'
 const ProfileCard = ({ user }) => {
+  const context = useContext(contextValue)
   return (
     <div className="col s12 m7">
       <div className="card horizontal transparent">
@@ -16,10 +17,12 @@ const ProfileCard = ({ user }) => {
             <h5 className="white-text">Email: {user.email}</h5>
           </div>
           <div className="card-action">
-            <a href="#" className="btn-large blue darken-2">
+            <a href="#"
+            onClick={context.deleteYourPosts}
+            className="btn-large blue darken-2">
               Delete all posts
             </a>
-            <a href="#" className="btn-large blue darken-2">
+            <a href="#" onClick={context.logOut} className="btn-large blue darken-2">
               Log Out
             </a>
           </div>

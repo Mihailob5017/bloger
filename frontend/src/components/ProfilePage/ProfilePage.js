@@ -4,7 +4,7 @@ import contextValue from "../../context API/Context";
 //COMPONENTS
 import NotLoggedIn from "../HomePage/NotLoggedIn";
 import ProfileCard from "./ProfileCard";
-
+import Blogs from "./Posts/Blogs";
 const ProfilePage = () => {
   const context = useContext(contextValue);
 
@@ -17,6 +17,7 @@ const ProfilePage = () => {
       {context.isUserAuthenticated ? (
         <>
           <ProfileCard user={context.user} />
+          <Blogs />
         </>
       ) : (
         <NotLoggedIn />

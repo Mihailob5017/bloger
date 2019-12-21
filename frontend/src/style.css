@@ -22,7 +22,7 @@
     background:rgba(200, 200, 200, 0.15) ;
 }
 .my-coll{
-    height: 500px;
+    height: 50vh;
     overflow-y: scroll;
 }
 .card-action{

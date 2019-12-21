@@ -94,6 +94,10 @@ const State = props => {
       console.error(error);
     }
   };
+  //filter a specific posts
+  const filterPosts = username =>
+    state.allBlogs.filter(blog => blog.username === username);
+  //log out all the posts
   const logOut = () => {
     const initialState = {
       user: {
@@ -109,6 +113,11 @@ const State = props => {
     };
     dispatch({ type: RESET_STATE, payload: initialState });
   };
+  //delete all you posts
+  const deleteYourPosts = async () => {
+    await filterPosts(state.user.username).forEach(post => deleteBlog(post._id));
+    getBlogs();
+  };
 
   //END OF ALL
   return (
@@ -123,7 +132,9 @@ const State = props => {
         getBlogs,
         postBlog,
         deleteBlog,
-        logOut
+        logOut,
+        filterPosts,
+        deleteYourPosts
       }}
     >
       {props.children}
