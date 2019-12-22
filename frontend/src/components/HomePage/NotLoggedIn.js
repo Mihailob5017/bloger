@@ -12,7 +12,7 @@ const NotLoggedIn = () => {
       <div className="modal-content white-text">
         <h4>It Turns Out you are not Logged in</h4>
         <p>
-          Go back to the Log-in page or create a new Account and come back
+          Go back and Log in or create a new Account and come back
           after!
         </p>
       </div>

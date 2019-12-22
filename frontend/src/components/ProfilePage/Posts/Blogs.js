@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import contextValue from "../../../context API/Context";
 import Blog from "./Blog";
+import { Link } from "react-router-dom";
 const Blogs = () => {
   const context = useContext(contextValue);
   useEffect(() => {
@@ -21,7 +22,7 @@ const Blogs = () => {
           className="collection-header white-text transparent"
           style={{ border: "none" }}
         >
-          <h4>You don't have any blogs!</h4>
+          <h4>You don't have any blogs! <Link className="btn right blue darken-2" to="/home">Write Blog</Link></h4>
         </li>
       ) : (
         context

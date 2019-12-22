@@ -19,10 +19,10 @@ const ProfileCard = ({ user }) => {
           <div className="card-action">
             <a href="#"
             onClick={context.deleteYourPosts}
-            className="btn-large blue darken-2">
+            className="btn blue darken-2">
               Delete all posts
             </a>
-            <a href="#" onClick={context.logOut} className="btn-large blue darken-2">
+            <a href="#" onClick={context.logOut} className="btn blue darken-2">
               Log Out
             </a>
           </div>

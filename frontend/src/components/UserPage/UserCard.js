@@ -1,7 +1,8 @@
-import React,{useContext} from 'react'
-import contextValue from '../../context API/Context'
+import React from 'react'
+import { Link } from 'react-router-dom'
+
 const UserCard = ({user}) => {
-    const context = useContext(contextValue)
+
     return (
         <div className="col s12 m7">
       <div className="card horizontal transparent">
@@ -15,6 +16,13 @@ const UserCard = ({user}) => {
             </h3>
             <h4 className="white-text">Username: {user.username}</h4>
             <h5 className="white-text">Email: {user.email}</h5>
+          </div>
+          <div className="card-action">
+            <Link to="/home"
+            
+            className="btn blue right darken-2">
+              Go Back
+            </Link>
           </div>
         </div>
       </div>
