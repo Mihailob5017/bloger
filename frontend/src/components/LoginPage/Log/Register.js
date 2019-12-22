@@ -33,6 +33,7 @@ const Register = () => {
         const res = await axios.post("http://localhost:5000/register", newUser);
         M.toast({ html: "Successfully Registered! Welcome to Bloger" });
         context.setToken(res.data);
+        context.getAllUsers();
       } catch (error) {
         console.log(error);
         M.toast({
