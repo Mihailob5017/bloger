@@ -1,12 +1,14 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import M from "materialize-css";
 import { Link } from "react-router-dom";
 import contextValue from "../../../context API/Context";
 const Blog = ({ blog }) => {
   useEffect(() => {
     M.Tooltip.init(document.querySelectorAll(".tooltipped"));
+    setState(context.filterUser(blog.username)[0]._id);
   }, []);
   const context = useContext(contextValue);
+  const [state, setState] = useState("");
 
   //
 
@@ -21,7 +23,7 @@ const Blog = ({ blog }) => {
       <a href="#!" className="secondary-content">
         {context.user.username !== blog.username ? (
           <Link
-            to="/"
+            to={`/${state}`}
             className="transparent tooltipped"
             data-position="left"
             data-tooltip="View Profile"

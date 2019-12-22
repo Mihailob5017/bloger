@@ -110,7 +110,7 @@ const State = props => {
         email: ""
       },
       token: "",
-      allUsers: [],
+      allUsers: state.allUsers,
       allBlogs: [],
       isUserAuthenticated: false
     };
@@ -133,6 +133,8 @@ const State = props => {
       console.log(error);
     }
   };
+  const filterUser = username =>
+    state.allUsers.filter(user => user.username === username);
 
   //END OF ALL
   return (
@@ -151,7 +153,8 @@ const State = props => {
         logOut,
         filterPosts,
         deleteYourPosts,
-        getAllUsers
+        getAllUsers,
+        filterUser
       }}
     >
       {props.children}
