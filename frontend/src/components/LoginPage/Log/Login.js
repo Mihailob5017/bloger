@@ -3,9 +3,9 @@ import contextValue from '../../../context API/Context';
 import M from "materialize-css";
 const axios = require("axios").default;
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("mixailo146");
+  const [password, setPassword] = useState("jsmv4183");
+  const [email, setEmail] = useState("mihailob5017@gmail.com");
 
   const context = useContext(contextValue)
 
